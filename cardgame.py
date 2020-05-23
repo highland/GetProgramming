@@ -25,16 +25,12 @@ class Suit(IntEnum):
         return self.name.title()
 
 
-@dataclass
+@dataclass(order=True)
 class Card:
     " Represents a Playing Card with a rank & suit. "
     # data attributes (__init__ is generated)
     rank: int
     suit: Suit
-
-    def __gt__(self, other):
-        return (self.rank > other.rank or
-                (self.rank == other.rank and self.suit > other.suit))
 
     def __str__(self):
         return f'{self.rank!s} of {self.suit!s}'
